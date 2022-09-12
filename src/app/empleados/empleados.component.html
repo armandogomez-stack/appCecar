@@ -1,0 +1,31 @@
+<div class="navbar navbar-dark bg-primary">
+    <a class="navbar-brand" href="">CRUD WEBINAR ANGULAR</a>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 mt-4">
+            <ul class="list-group">
+                <li  *ngFor="let empleado of empleadosArray" (click)="abrirEditar(empleado)"
+                [class.active]="empleado === empleadoSeleccionado" class="list-group-item list-group-item-action">
+                  <span class="badge badge-primary">{{empleado.id}}</span>  {{empleado.nombre}} - {{empleado.pais}}
+                </li>
+            </ul>
+        </div>
+       <div class="card">
+            <div class="card-body">
+                <div class="card-title">
+                    Inserte un empleado
+                </div>
+                <div>
+                    <input type="text" [(ngModel)]="empleadoSeleccionado.nombre" placeholder="inserte un nombre" class="form-control">
+                </div>
+                <div>
+                    <input type="text" [(ngModel)]="empleadoSeleccionado.pais" placeholder="inserte un pais" class="form-control">
+                </div>
+                <button class="btn btn-primary" (click)="enviarOeditar()">Enviar</button>
+                <button *ngIf="empleadoSeleccionado.id != 0" class="btn btn-danger" (click)="eliminar()" >Eliminar</button>
+            </div>
+       </div>
+    </div>
+</div>
